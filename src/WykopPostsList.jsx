@@ -11,7 +11,7 @@ export class WykopPostsList extends React.Component {
     const phone = truncateString(Posts.description, 150);
 	const video = Posts.source_url;
     const key = Posts.id;
-	const unixTime= Posts.created_utc
+	const unixTime= Posts.date;
     return <PostsItem key={key} avatarUrl={avatarUrl} name={name} phone={phone} video={video} unixTime={unixTime}/>;
   };
 

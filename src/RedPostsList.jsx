@@ -8,9 +8,9 @@ export class RedPostsList extends React.Component {
 	console.log(avatarUrl);
     const name = Posts.author+ " | " +Posts.title //`${title} ${first} ${last}`.trim();
     const phone = truncateString(Posts.selftext, 150);
-	const video = Posts.url;
+	  const video = Posts.url;
     const key = Posts.url;
-	const unixTime= Posts.created_utc
+	  const unixTime= timeConverter(Posts.created_utc);
     return <PostsItem key={key} avatarUrl={avatarUrl} name={name} phone={phone} video={video} unixTime={unixTime}/>;
   };
 
@@ -27,4 +27,11 @@ function truncateString(myString, limit) {
   const shortened = myString.indexOf(' ', limit);
   if (shortened === -1) return myString;
   return myString.substring(0, shortened);
+}
+
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var month  = a.getMonth()+1 
+  var time = a.getDate() + '-' + month + '-' + a.getFullYear() + ' ' + a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds() ;
+  return time;
 }
