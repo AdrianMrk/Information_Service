@@ -3,16 +3,15 @@ import { PostsItem } from "../PostsItems";
 
 export class WykopPostsList extends React.Component {
   wykopPostsToPostsItems = Posts => {
-	  
-	const avatarUrl = Posts.preview;//contact.picture.thumbnail;
-	console.log(avatarUrl);
-    const name = Posts.author.login+ " | " +Posts.title //`${title} ${first} ${last}`.trim();
-
-    const phone = truncateString(Posts.description, 150);
-	const video = Posts.source_url;
+    
     const key = Posts.id;
-	const unixTime= Posts.date;
-    return <PostsItem key={key} avatarUrl={avatarUrl} name={name} phone={phone} video={video} unixTime={unixTime}/>;
+	  const preview = Posts.preview+"|";//contact.picture.thumbnail;
+  	console.log(preview);
+    const name = Posts.author.login+ " | " +Posts.title //`${title} ${first} ${last}`.trim();
+    const description = truncateString(Posts.description, 150);
+	  const source = Posts.source_url;
+	  const date= Posts.date;
+    return <PostsItem key={key} preview={preview} name={name} description={description} source={source} date={date}/>;
   };
 
   render() {

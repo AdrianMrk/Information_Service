@@ -3,15 +3,19 @@ import { PostsItem } from "../PostsItems";
 
 export class RedPostsList extends React.Component {
   redPostsToPostsItems = Posts => {
-	  
-	const avatarUrl = Posts.url;//contact.picture.thumbnail;
-	console.log(avatarUrl);
+    var preview = Posts.url
+	  if(Posts.media)
+    preview = Posts.url+"|"+Posts.media.reddit_video.fallback_url;//contact.picture.thumbnail;
+   
+  	console.log(preview);
     const name = Posts.author+ " | " +Posts.title //`${title} ${first} ${last}`.trim();
-    const phone = truncateString(Posts.selftext, 150);
-	  const video = Posts.url;
-    const key = Posts.url;
-	  const unixTime= timeConverter(Posts.created_utc);
-    return <PostsItem key={key} avatarUrl={avatarUrl} name={name} phone={phone} video={video} unixTime={unixTime}/>;
+    const description = truncateString(Posts.selftext, 150);
+	  const source = Posts.url;
+    const key = Posts.id;
+    const date= timeConverter(Posts.created_utc);
+  //  if(Posts.preview)
+  //  console.log(Posts.preview.images[0].source.url);
+    return <PostsItem key={key} preview={preview} name={name} description={description} source={source} date={date}/>;
   };
 
   render() {
