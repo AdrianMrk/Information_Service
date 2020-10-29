@@ -1,9 +1,9 @@
 import * as React from "react";
-import { RedPostsList } from "./RedPostsList";
-import { WykopPostsList } from "./WykopPostsList";
+import { RedPostsList } from "./components/reddit_comp/RedPostsList";
+import { WykopPostsList } from "./components/wykop_comp/WykopPostsList";
 import { AppHeader } from "./AppHeader";
-import reddit from "./reddit";
-import wykop from "./wykop";
+import reddit from "./components/reddit_comp/reddit";
+import wykop from "./components/wykop_comp/wykop";
 
 export class App extends React.Component {
   
@@ -32,12 +32,12 @@ export class App extends React.Component {
   onClickHot = () => {
     console.clear();
 	  this.setState({ redditPosts: null })
-    reddit.search("top","10").then(results => this.setState({ redditPosts: results })& console.log(results))
+    reddit.search("hot","10").then(results => this.setState({ redditPosts: results })& console.log(results))
   
   }
   onClickTop = () => {
     console.clear();
-    reddit.search("hot","2").then(results => this.setState({ redditPosts: results })& console.log(results))
+    reddit.search("top","10").then(results => this.setState({ redditPosts: results })& console.log(results))
     
 
   }

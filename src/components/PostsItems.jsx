@@ -1,5 +1,5 @@
 import * as React from "react";
-import reddit from "./reddit";
+import reddit from "./reddit_comp/reddit";
 
 export const PostsItem = ({ avatarUrl, name, phone, video, unixTime}) => {
   

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PostsItem } from "./PostsItems";
+import { PostsItem } from "../PostsItems";
 
 export class WykopPostsList extends React.Component {
   wykopPostsToPostsItems = Posts => {
