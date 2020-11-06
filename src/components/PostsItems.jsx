@@ -5,10 +5,9 @@ export const PostsItem = ({ preview, name, description, source, date, isvideo}) 
 
 //console.log(preview)
 var arr=preview.split('|');
-var first=arr.shift(); //or arr[arr.length-1];
+var first=arr.shift();
 var last=arr.pop();
-//console.log({last})
-//console.log(preview.slice(0, preview.indexOf('|')))
+
 
 if(isvideo){
   return (
