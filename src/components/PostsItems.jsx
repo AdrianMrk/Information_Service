@@ -1,17 +1,16 @@
 import * as React from "react";
-import reddit from "./reddit_comp/reddit";
 
-export const PostsItem = ({ preview, name, description, source, date}) => {
+export const PostsItem = ({ preview, name, description, source, date, isvideo}) => {
 
 
 //console.log(preview)
 var arr=preview.split('|');
 var first=arr.shift(); //or arr[arr.length-1];
 var last=arr.pop();
-console.log({last})
+//console.log({last})
 //console.log(preview.slice(0, preview.indexOf('|')))
 
-if(last){
+if(isvideo){
   return (
   <li className="item">
     
@@ -59,7 +58,7 @@ else if(first)
         <div className="description">{description}</div>		
       </div><br/>
 	
-      {reddit.allert("witam")}
+     
 	  <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
       
     </li>
@@ -77,7 +76,7 @@ else{
       <div className="description">{description}</div>		
     </div><br/>
 
-    {reddit.allert("witam")}
+    
   <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
     
   </li>

@@ -1,28 +1,19 @@
-import * as React from "react";
 import db from "../config";
-import { WykopPostsList } from "../NewPost";
 
 
 
 export default {
-  search: function() {
+  getHot: function() {
     return new Promise((resolve) => {
-      let redditPosts = [];
-      var ifer = 1;
-      let nodesRef = db.ref("/HotPosts")
-      let answers = {}
-     
-        nodesRef.once('value').then((snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-             let playerKey = childSnapshot.key;
-             let answersRef = childSnapshot.val();
-             
-             redditPosts.push(childSnapshot.val());
-  
-           })
-         }).then(() => {  resolve(redditPosts) //console.log(redditPosts)
-          ;
-         })// 5 sekund
+      let newPosts = [];
+      let dbref = db.ref("/HotPosts")
+
+      dbref.once('value').then((snapshot) => {
+            snapshot.forEach((childSnapshot) => {            
+              newPosts.push(childSnapshot.val());
+    
+            })
+         }).then(() => {resolve(newPosts);})
     });
     }
 }

@@ -1,18 +1,19 @@
 import * as React from "react";
 import db from "../src/components/config";
-import { RedPostsList } from "./components/reddit_comp/RedPostsList";
+import { PostsList } from "./components/reddit_comp/PostsList";
 import { WykopPostsList } from "./components/wykop_comp/WykopPostsList";
 import { AppHeader } from "./AppHeader";
-import reddit from "./components/reddit_comp/reddit";
+import firebaseData from "./components/reddit_comp/FirebaseData";
 import wykop from "./components/wykop_comp/wykop";
 
 export class App extends React.Component {
   
   state = {
-    redditPosts: null,
+    posts: null,
     wykopPosts: null,
   };
 
+  
  // componentDidMount() {
 
   //  reddit.search("hot","10").then(results => this.setState({ redditPosts: results })& console.log(results))
@@ -38,9 +39,9 @@ export class App extends React.Component {
     
    // this.search().then(results => this.setState({ redditPosts: results })& console.log(results))
     
-   const promisedPost = reddit.search();
+   const promisedPost = firebaseData.getHot();
   promisedPost
-  .then(post => console.log(post))
+  .then(results => this.setState({ posts: results }))
   .catch(error => console.log( error));
   }
   
@@ -85,7 +86,8 @@ export class App extends React.Component {
 
   
   render() {
-    const redditPosts = this.state.redditPosts;
+   // console.clear();
+    const posts = this.state.posts;
     const wykopPosts = this.state.wykopPosts;
     return (
       <div>
@@ -97,7 +99,7 @@ export class App extends React.Component {
         <button onClick={this.onClickNew}>NEW</button>;
         <button onClick={this.onClickWykop}>Wykop</button>;
         {/*wykopPosts ? <WykopPostsList wykopPosts={wykopPosts} /> : 'Ładowanie…'*/}
-        {/*redditPosts ? console.log({redditPosts}) : 'Ładowanie…' /*<RedPostsList redditPosts={redditPosts} /> : 'Ładowanie…'*/}
+        {posts ? <PostsList posts={posts} /> : 'Ładowanie…'}
          
           
         </main>
