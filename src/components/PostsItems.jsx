@@ -1,14 +1,15 @@
 import * as React from "react";
 
-export const PostsItem = ({ preview, name, description, source, date, isvideo}) => {
+export const PostsItem = ({ preview, name, description, source, date, isvideo, lang, currentlanguage}) => {
 
 
-//console.log(preview)
+
+//console.log({currentlanguage});
 var arr=preview.split('|');
 var first=arr.shift();
 var last=arr.pop();
 
-
+if(currentlanguage === lang){
 if(isvideo){
   return (
   <li className="item">
@@ -81,6 +82,7 @@ else{
   </li>
   );
 };
-
-  
+}else{	
+  return null;
+}
 }

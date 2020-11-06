@@ -8,6 +8,7 @@ export class App extends React.Component {
   
   state = {
     posts: null,
+    currentlanguage: "PL",
   };
 
 
@@ -32,23 +33,27 @@ export class App extends React.Component {
   onClickNew = () => {
  
   }
-
+  onClickLang = () => {
+    this.state.currentlanguage = "ENG"
+  }
  
 
   
   render() {
    // console.clear();
     const posts = this.state.posts;
+    const currentlanguage = this.state.currentlanguage;
     return (
       <div>
         <AppHeader/>
        
         <main className="ui main text container">
+        <input type="checkbox" id="myCheck" onClick={this.onClickLang}/>
         <button onClick={this.onClickHot}>HOT</button>;
         <button onClick={this.onClickTop}>TOP</button>;
         <button onClick={this.onClickNew}>NEW</button>;
         <button onClick={this.onClickWykop}>Wykop</button>;
-        {posts ? <PostsList posts={posts} /> : 'Ładowanie…'}
+        {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : 'Ładowanie…'}
          
           
         </main>
