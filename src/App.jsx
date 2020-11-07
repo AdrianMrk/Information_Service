@@ -33,8 +33,11 @@ export class App extends React.Component {
   onClickNew = () => {
  
   }
-  onClickLang = () => {
-    this.state.currentlanguage = "ENG"
+  chooseLang = () => {
+    if(this.state.currentlanguage === "PL")
+    this.setState({ currentlanguage: "ENG" })
+    else
+    this.setState({ currentlanguage: "PL" })
   }
  
 
@@ -45,14 +48,21 @@ export class App extends React.Component {
     const currentlanguage = this.state.currentlanguage;
     return (
       <div>
-        <AppHeader/>
+        
        
         <main className="ui main text container">
-        <input type="checkbox" id="myCheck" onClick={this.onClickLang}/>
+        
+        PL 
+        <label class="switch">
+          <input type="checkbox" onClick={this.chooseLang}/>
+          <span class="slider round"></span>
+        </label>
+        ENG
+        <br/> <br/>
         <button onClick={this.onClickHot}>HOT</button>;
         <button onClick={this.onClickTop}>TOP</button>;
         <button onClick={this.onClickNew}>NEW</button>;
-        <button onClick={this.onClickWykop}>Wykop</button>;
+        
         {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : 'Ładowanie…'}
          
           
