@@ -1,5 +1,7 @@
 import * as React from "react";
-
+import { Button } from "react-bootstrap";
+import Card from 'react-bootstrap/Card'
+import 'bootstrap/dist/css/bootstrap.min.css';
 export const PostsItem = ({ preview, name, description, source, date, isvideo, lang, currentlanguage}) => {
 
 
@@ -12,20 +14,25 @@ var last=arr.pop();
 if(currentlanguage === lang){
 if(isvideo){
   return (
-  <li className="item">
-    
-    <div className="content">
-      <h4 className="header">{name} | {date}</h4>
-      <div className="description">{description}</div>		
-    </div><br/>
-    <video id="background-video" loop controls width="320" height="240" >
+    <Card border="none" style={{ backgroundColor: 'white' }}>
+     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+    <video id="background-video" loop controls width="100%" height="auto" >
     <source src={last} type="video/mp4" />
     <source src={last} type="video/ogg" />
     Your browser does not support the video tag.
     </video>
-  <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
-    
-  </li>
+    <Card.Body>
+      
+      <Card.Text>
+      {description}
+      </Card.Text>
+      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">{date}</small>
+    </Card.Footer>
+  </Card>
+  
 );
 }
 
@@ -35,51 +42,66 @@ else if(first)
 	
 
 	if(ext.toLowerCase() === 'png' || ext.toLowerCase() === 'jpg' ){
+// boostrap
 
   return (
-    <li className="item">
+    
+  <Card border="none" style={{ backgroundColor: 'white' }}>
+    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+      <Card.Img variant="top" src={first} alt="Brak zdjęcia"/>
+    <Card.Body>
       
-      <div className="content">
-        <h4 className="header">{name} | {date}</h4>
-        <div className="description">{description}</div>		
-      </div><br/>
-      <img src={first} className="ui small rounded image" alt="Error" />
-	  <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
-      
-    </li>
+      <Card.Text>
+      {description}
+      </Card.Text>
+      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">{date}</small>
+    </Card.Footer>
+  </Card>
+  
   );
 	}
 	else{
 	return (	
-		  <li className="item">
+  <Card border="none" style={{ backgroundColor: 'white' }}>
+    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+    <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
+    <Card.Body>
       
-      <div className="content">
-        <h4 className="header">{name} | {date}</h4>
-        <div className="description">{description}</div>		
-      </div><br/>
-	
-     
-	  <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
-      
-    </li>
+      <Card.Text>
+      {description}
+      </Card.Text>
+      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">{date}</small>
+    </Card.Footer>
+  </Card>
+		
   );
   }	
 }
 
 
-else{	
+else	{
   return (	
-    <li className="item">
     
-    <div className="content">
-      <h4 className="header">{name} | {date}</h4>
-      <div className="description">{description}</div>		
-    </div><br/>
-
-    
-  <a href={source} target="_blank" rel="noopener noreferrer">link text</a>
-    
-  </li>
+  <Card border="none" style={{ backgroundColor: 'white' }}>
+    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+    <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
+    <Card.Body>
+      
+      <Card.Text>
+      {description}
+      </Card.Text>
+      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+    </Card.Body>
+    <Card.Footer>
+      <small className="text-muted">{date}</small>
+    </Card.Footer>
+  </Card>
   );
 };
 }else{	

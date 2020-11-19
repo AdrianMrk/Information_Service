@@ -1,6 +1,7 @@
 import * as React from "react";
 import { PostsList } from "./components/PostsList";
 import firebaseData from "./components/FirebaseData";
+import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
 
 export class App extends React.Component {
@@ -39,6 +40,15 @@ export class App extends React.Component {
      .catch(error => console.log( error));
   }
 
+  onClickRSS = () => {
+    this.setState({ posts: null });
+    
+    const promisedPost = firebaseData.getRSS();
+     promisedPost
+     .then(results => this.setState({ posts: results }))
+     .catch(error => console.log( error));
+  }
+
 
   
   chooseLang = () => {
@@ -62,15 +72,20 @@ export class App extends React.Component {
         
         
         PL  <label className="switch">
-          <input type="checkbox" onClick={this.chooseLang}/>
+          <input type="checkbox" value="2" onClick={this.chooseLang}/>
           <span className="slider round"></span>
         </label> WORLD
          
         <br/> <br/>
-        <button onClick={this.onClickHot}>HOT</button>
-        <button onClick={this.onClickTop}>TOP</button>
-        <button onClick={this.onClickNew}>NEW</button>
         
+
+        <ToggleButtonGroup type="checkbox" value="1">
+          <ToggleButton onClick={this.onClickRSS}>RSS</ToggleButton>
+          <ToggleButton onClick={this.onClickHot}>HOT</ToggleButton>
+          <ToggleButton onClick={this.onClickTop}>TOP</ToggleButton>
+          <ToggleButton onClick={this.onClickNew}>New</ToggleButton>
+        </ToggleButtonGroup>
+        <br/> <br/>
         {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : 'Ładowanie…'}
          
           

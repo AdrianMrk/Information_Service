@@ -1,8 +1,8 @@
 import * as React from "react";
 import { PostsItem } from "./PostsItems";
-
-
-
+//import Card from 'react-bootstrap/Card'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { CardColumns } from "react-bootstrap";
 
 export class PostsList extends React.Component {
 
@@ -35,9 +35,9 @@ export class PostsList extends React.Component {
 
   render() {
     return (
-      <ul className="ui relaxed divided list selection">
+      <CardColumns>
         {this.props.posts.map(this.PostsListToPostsItems)}
-      </ul>
+      </CardColumns>
     );
   }
 }
