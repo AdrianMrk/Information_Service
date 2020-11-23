@@ -48,9 +48,9 @@ else if(first)
     
   <Card border="none" style={{ backgroundColor: 'white' }}>
     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
-      <Card.Img variant="top" src={first} alt="Brak zdjęcia"/>
+      <Card.Img variant="top" src={first} alt="Brak zdjęcia" />
     <Card.Body>
-      
+    
       <Card.Text>
       {description}
       </Card.Text>

@@ -1,21 +1,14 @@
 import * as React from "react";
+import {App} from "./App"
 
 export const AppHeader = () => {
   return (
     <header className="ui fixed menu">
-      <nav className="ui container">
-        <div className="header item">
-          <img
-            className="logo"
-            src="https://typeofweb.com/wp-content/uploads/2017/08/cropped-typeofweb_logo-04-white-smaller-1-e1504359870362.png"
-            alt="logo"
-          />
-          Lista kontaktów
-        </div>
-        <div className="header item">
-          <button className="ui button">Dodaj</button>
-        </div>
-      </nav>
+      <div className="myButtons" style={{ backgroundColor: 'white' }} onClick={App.onClickRSS()} >Strona główna</div>
+        <p style={{ position: 'absolute', left:'122px', top:'48px', backgroundColor: 'rgb(247, 247, 247)',paddingRight:'4px',paddingLeft:'4px',  }}>Strefa forum</p>
+        <div className="myButtons" onClick={App.onClickHot()}>Gorące</div>
+        <div className="myButtons" onClick={App.onClickTop()}>TOP</div>
+        <div className="myButtons" onClick={App.onClickNew()}>Najnowsze</div>
     </header>
   );
 };

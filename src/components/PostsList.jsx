@@ -1,6 +1,5 @@
 import * as React from "react";
 import { PostsItem } from "./PostsItems";
-//import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CardColumns } from "react-bootstrap";
 
