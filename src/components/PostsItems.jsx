@@ -26,7 +26,7 @@ if(isvideo){
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+      <Button href={source} target="_blank" variant="primary">Go there</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -54,7 +54,7 @@ else if(first)
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+      <Button href={source} target="_blank" variant="primary">Go there</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -73,7 +73,7 @@ else if(first)
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+      <Button href={source} target="_blank" variant="primary">Go there</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -96,7 +96,7 @@ else	{
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go somewhere</Button>
+      <Button href={source} target="_blank" variant="primary">Go there</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
