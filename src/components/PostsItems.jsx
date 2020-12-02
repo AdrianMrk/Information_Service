@@ -46,7 +46,7 @@ else if(first)
 
   return (
     
-  <Card border="none" style={{ backgroundColor: 'white' }}>
+  <Card className="tocos">
     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
       <Card.Img variant="top" src={first} alt="Brak zdjęcia" />
     <Card.Body>
