@@ -14,7 +14,7 @@ var last=arr.pop();
 if(currentlanguage === lang){
 if(isvideo){
   return (
-    <Card border="none" style={{ backgroundColor: 'white' }}>
+    <Card>
      <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
     <video id="background-video" loop controls width="100%" height="auto" >
     <source src={last} type="video/mp4" />
@@ -46,7 +46,7 @@ else if(first)
 
   return (
     
-  <Card className="tocos">
+  <Card >
     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
       <Card.Img variant="top" src={first} alt="Brak zdjęcia" />
     <Card.Body>
@@ -65,7 +65,7 @@ else if(first)
 	}
 	else{
 	return (	
-  <Card border="none" style={{ backgroundColor: 'white' }}>
+  <Card>
     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
     <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
     <Card.Body>
@@ -88,7 +88,7 @@ else if(first)
 else	{
   return (	
     
-  <Card border="none" style={{ backgroundColor: 'white' }}>
+  <Card>
     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
     <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
     <Card.Body>

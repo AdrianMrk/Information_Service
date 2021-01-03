@@ -1,40 +1,43 @@
 import * as React from "react";
 import { PostsList } from "./components/PostsList";
 import firebaseData from "./components/FirebaseData";
+import Loading from './components/Load_Anim'
 import { Col, Container,Navbar,Nav} from "react-bootstrap";
-import './index.css'
 import Language from '@material-ui/icons/Language';
+
 
 export class App extends React.Component {
   
   state = {
     posts: null,
-    currentlanguage: "PL",
+    currentlanguage: null,
   };
 
-  refresh = () => {
-    window.location.reload();
+  componentWillMount() {    
+    let sessionlanguage = sessionStorage.getItem("Lang");
+    sessionlanguage ? this.setState({ currentlanguage: sessionlanguage,}) : this.setState({ currentlanguage: 'PL'})
+    console.log(sessionlanguage)   
   }
 
-  componentDidMount()
-  {
-    this.setState({ posts: null });
-    
+  componentDidMount() {  
     const promisedPost = firebaseData.getRSS();
     promisedPost
     .then(results => this.setState({ posts: results }))
     .catch(error => console.log( error));
+    this.chooseLang()   
+  }
+  
+  refresh = () => {
+    window.location.reload();
   }
 
-  onClickHot = () => {
-    
+  onClickHot = () => {    
     this.setState({ posts: null });
     
    const promisedPost = firebaseData.getHot();
     promisedPost
     .then(results => this.setState({ posts: results }))
     .catch(error => console.log( error));
-    
   }
  
   onClickTop = () => {
@@ -44,8 +47,8 @@ export class App extends React.Component {
      promisedPost
      .then(results => this.setState({ posts: results }))
      .catch(error => console.log( error));
-
   }
+
   onClickNew = () => {
     this.setState({ posts: null });
     
@@ -65,16 +68,19 @@ export class App extends React.Component {
   }
 
   chooseLang = () => {
-    if(this.state.currentlanguage === "PL")
-    {let x = document.getElementById("changeLangButton")
-    x.firstChild.style.display ="block"
-    x.lastChild.style.display ="none"
-    this.setState({ currentlanguage: "ENG" })}
+    if(this.state.currentlanguage === "ENG")
+      {let x = document.getElementById("changeLangButton");
+      x.firstChild.style.display ="none";
+      x.lastChild.style.display ="block";
+      this.setState({ currentlanguage: "PL" });
+      sessionStorage.setItem("Lang", "ENG");}
     else
-    {this.setState({ currentlanguage: "PL" }) 
-    let x = document.getElementById("changeLangButton")
-    x.firstChild.style.display ="none"
-    x.lastChild.style.display ="block"
+    { 
+      let x = document.getElementById("changeLangButton");
+      x.firstChild.style.display ="block";
+      x.lastChild.style.display ="none";
+      this.setState({ currentlanguage: "ENG" });
+      sessionStorage.setItem("Lang", "PL");
     }
   }
   
@@ -84,20 +90,21 @@ export class App extends React.Component {
     const posts = this.state.posts;
     const currentlanguage = this.state.currentlanguage;
     return (
-      <div>
-      <Col md={{ span: 10, offset: 1 }}>
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" id="header">
-          <Navbar.Brand href="#home" onClick={this.refresh}><img src="logo.png" className="float-right" alt="" style={{ width: '200px',borderRadius:'10px', margin:'-6px' }}/></Navbar.Brand>
+    <div>
+      <div id="header">
+      <Col md={{ span: 10, offset: 1 }} xs={{ span: 12, offset: 0 }} >
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+          <Navbar.Brand onClick={this.refresh}><img src="logo.png" alt="" style={{ width: '180px',borderRadius:'0px 0px 0px 0px', margin:'0px',cursor:'pointer' }}/></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#hot" onClick={this.onClickHot} >Gorące</Nav.Link>
-              <Nav.Link href="#top" onClick={this.onClickTop}>Najlepsze</Nav.Link>
-              <Nav.Link href="#new" onClick={this.onClickNew}>Najnowsze</Nav.Link>
+              <Nav.Link onClick={this.onClickHot}>Gorące</Nav.Link>
+              <Nav.Link onClick={this.onClickTop}>Najlepsze</Nav.Link>
+              <Nav.Link onClick={this.onClickNew}>Najnowsze</Nav.Link>
             </Nav>
             <Nav>
               
-              <Nav.Link eventKey={2} href="#memes"> 
+              <Nav.Link> 
               <div  id="changeLangButton" onClick={this.chooseLang}>
                 <Language style={{display:'none'}} /><p><b>PL</b></p>
               </div>
@@ -106,15 +113,14 @@ export class App extends React.Component {
           </Navbar.Collapse>
         </Navbar>
       </Col>
-      <Col md={{ span: 8, offset: 2 }} id="main" >  
+      </div>
+      <Col md={{ span: 8, offset: 2 }} sm={{ span: 12, offset: 0 }} id="main" >  
        <Container >
-               
-          {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : ''}         
           
+          {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : <Loading />}         
         </Container>
       </Col>
-      </div>
+    </div>
     );
   }
-  
 }

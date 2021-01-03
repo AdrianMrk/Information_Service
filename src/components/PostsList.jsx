@@ -34,7 +34,7 @@ export class PostsList extends React.Component {
 
   render() {
     return (
-      <CardColumns id="twoj">
+      <CardColumns>
         {this.props.posts.map(this.PostsListToPostsItems)}
       </CardColumns>
     );
