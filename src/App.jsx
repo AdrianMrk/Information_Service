@@ -15,11 +15,12 @@ export class App extends React.Component {
 
   componentWillMount() {    
     let sessionlanguage = sessionStorage.getItem("Lang");
-    sessionlanguage ? this.setState({ currentlanguage: sessionlanguage,}) : this.setState({ currentlanguage: 'PL'})
+    sessionlanguage ? this.setState({ currentlanguage: sessionlanguage,}) : this.setState({ currentlanguage: 'ENG'})
     console.log(sessionlanguage)   
   }
 
   componentDidMount() {  
+    
     const promisedPost = firebaseData.getRSS();
     promisedPost
     .then(results => this.setState({ posts: results }))
@@ -85,8 +86,7 @@ export class App extends React.Component {
   }
   
   render() {
-   // console.clear();
-   //<main className="ui main text container">
+
     const posts = this.state.posts;
     const currentlanguage = this.state.currentlanguage;
     return (
@@ -94,7 +94,7 @@ export class App extends React.Component {
       <div id="header">
       <Col md={{ span: 10, offset: 1 }} xs={{ span: 12, offset: 0 }} >
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-          <Navbar.Brand onClick={this.refresh}><img src="logo.png" alt="" style={{ width: '180px',borderRadius:'0px 0px 0px 0px', margin:'0px',cursor:'pointer' }}/></Navbar.Brand>
+          <Navbar.Brand onClick={this.refresh}><img src="logo.png" alt="" id="logo"/></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
@@ -102,8 +102,7 @@ export class App extends React.Component {
               <Nav.Link onClick={this.onClickTop}>Najlepsze</Nav.Link>
               <Nav.Link onClick={this.onClickNew}>Najnowsze</Nav.Link>
             </Nav>
-            <Nav>
-              
+            <Nav>             
               <Nav.Link> 
               <div  id="changeLangButton" onClick={this.chooseLang}>
                 <Language style={{display:'none'}} /><p><b>PL</b></p>
@@ -115,8 +114,7 @@ export class App extends React.Component {
       </Col>
       </div>
       <Col md={{ span: 8, offset: 2 }} sm={{ span: 12, offset: 0 }} id="main" >  
-       <Container >
-          
+       <Container >         
           {posts ? <PostsList posts={posts} currentlanguage={currentlanguage}/> : <Loading />}         
         </Container>
       </Col>

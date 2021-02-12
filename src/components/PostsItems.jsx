@@ -2,11 +2,11 @@ import * as React from "react";
 import { Button } from "react-bootstrap";
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
-export const PostsItem = ({ preview, name, description, source, date, isvideo, lang, currentlanguage}) => {
+export const PostsItem = ({ preview, author, title, description, source, date, isvideo, lang, currentlanguage}) => {
 
 
 
-//console.log({currentlanguage});
+
 var arr=preview.split('|');
 var first=arr.shift();
 var last=arr.pop();
@@ -15,7 +15,7 @@ if(currentlanguage === lang){
 if(isvideo){
   return (
     <Card>
-     <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+     <Card.Body>{author}<Card.Title><b>{title}</b></Card.Title></Card.Body>
     <video id="background-video" loop controls width="100%" height="auto" >
     <source src={last} type="video/mp4" />
     <source src={last} type="video/ogg" />
@@ -26,7 +26,7 @@ if(isvideo){
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go there</Button>
+      <Button href={source} target="_blank" variant="primary">MORE</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -42,19 +42,21 @@ else if(first)
 	
 
 	if(ext.toLowerCase() === 'png' || ext.toLowerCase() === 'jpg' ){
-// boostrap
+
 
   return (
     
   <Card >
-    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
+    <Card.Body>{author}
+    <Card.Title><b>{title}</b></Card.Title>
+    </Card.Body>
       <Card.Img variant="top" src={first} alt="Brak zdjęcia" />
     <Card.Body>
     
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go there</Button>
+      <Button href={source} target="_blank" variant="primary">MORE</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -66,14 +68,14 @@ else if(first)
 	else{
 	return (	
   <Card>
-    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
-    <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
+    <Card.Body>{author}<Card.Title><b>{title}</b></Card.Title></Card.Body>
+    <Card.Img variant="top" src={"noimg.png"} alt="Brak zdjęcia"/>
     <Card.Body>
       
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go there</Button>
+      <Button href={source} target="_blank" variant="primary">MORE</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>
@@ -89,14 +91,14 @@ else	{
   return (	
     
   <Card>
-    <Card.Body><Card.Title><b>{name}</b></Card.Title></Card.Body>
-    <Card.Img variant="top" src={"https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-Color-Logo.wine.svg"} alt="Brak zdjęcia"/>
+    <Card.Body>{author}<Card.Title><b>{title}</b></Card.Title></Card.Body>
+    <Card.Img variant="top" src={"noimg.png"} alt="Brak zdjęcia"/>
     <Card.Body>
       
       <Card.Text>
       {description}
       </Card.Text>
-      <Button href={source} target="_blank" variant="primary">Go there</Button>
+      <Button href={source} target="_blank" variant="primary">MORE</Button>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">{date}</small>

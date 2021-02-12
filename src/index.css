@@ -1,17 +1,25 @@
 
-body{background-color:white !important;}/*eaeded*/
+body{background-color:white !important;}
 
 #header
 {
   font-size: 20px;
   font-weight: bold;
-  background-color:#f8f9fa !important;/*#f8f9fa #343a40 */
+  background-color:#f8f9fa !important;
   border-bottom:solid 1px rgb(230, 230, 230);  
+}
+
+#logo{
+
+  width: 180px;
+  border-radius: 0px 0px 0px 0px;
+  margin:0px;
+  cursor:pointer; 
+
 }
 
 #main 
 {
-  /*   margin-top: 1em;*/
   padding:1em;
 }
 
@@ -32,22 +40,7 @@ body{background-color:white !important;}/*eaeded*/
 #changeLangButton {width:33px;font-size:15px;transform: scale(1.4);padding-left:4px;}
 #changeLangButton:hover{color:rgb(18, 62, 255); }
 
-
-
-/*
-.ui.menu .item img.logo {
-  margin-right: 1.5em;
-}
-
-ul.ui.list li:before {
-  display: none;
-  content: '';
-}
-li:after {margin:2em;}
-*/
-/*Loading animation*/
-
-.spinner {
+.loader {
   margin: 200px auto;
   width: 100px;
   height: 80px;
@@ -56,47 +49,48 @@ li:after {margin:2em;}
   margin-bottom:1000px;
 }
 
-.spinner > div {
+.loader div{
   background: linear-gradient(0deg, rgb(22, 22, 209) 0%, rgb(0, 174, 255) 100%);
   height: 100%;
   width: 12px;
   margin:4px;
   display: inline-block;
-  border-radius: 10px;
-  
-  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
-  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  border-radius: 10px; 
+  -webkit-animation: pointdelay 1.2s infinite ease-in-out;
+  animation: pointdelay 1.2s infinite ease-in-out;
 }
 
-.spinner #point2 {
+.loader #p2 {
   -webkit-animation-delay: -1.1s;
   animation-delay: -1.1s;
 }
 
-.spinner #point3 {
+.loader #p3 {
   -webkit-animation-delay: -1.0s;
   animation-delay: -1.0s;
 }
 
-.spinner #point4 {
+.loader #p4 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
 
 
 
-@-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+@-webkit-keyframes pointdelay {
   20% { -webkit-transform: scaleY(1.0) }
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+
 }
 
-@keyframes sk-stretchdelay {
-  0%, 40%, 100% { 
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
-  }  20% { 
+@keyframes pointdelay {
+  20% { 
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  
 }
 

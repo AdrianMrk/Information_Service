@@ -11,7 +11,8 @@ export class PostsList extends React.Component {
     const currentlanguage = this.props.currentlanguage;
 
     const preview = posts.preview;
-    const name = posts.author+ " | " +posts.title;
+    const author = posts.author;
+    const title = posts.title;
     const description = posts.description;
 	  const source = posts.source;
     const key = posts.id;
@@ -22,7 +23,8 @@ export class PostsList extends React.Component {
     return <PostsItem 
     key={key} 
     preview={preview} 
-    name={name} 
+    author={author} 
+    title={title} 
     description={description} 
     source={source} 
     date={date} 
